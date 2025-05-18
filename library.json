@@ -1,0 +1,68 @@
+{
+    "py/object": "classes.library.Library",
+    "lst_user": [
+        {
+            "py/object": "classes.user.User",
+            "_name": "larcel",
+            "_age": 12,
+            "lst_livre": [
+                {
+                    "py/object": "classes.book.Book",
+                    "_author": "beyblade",
+                    "_title": "mrco",
+                    "_genre": {
+                        "py/reduce": [
+                            {
+                                "py/type": "type_enum.type_livre.TypeLivre"
+                            },
+                            {
+                                "py/tuple": [
+                                    "Finction"
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "lst_livre": [
+        {
+            "py/id": 4
+        },
+        {
+            "py/object": "classes.book.Book",
+            "_author": "babab",
+            "_title": "jaa",
+            "_genre": {
+                "py/reduce": [
+                    {
+                        "py/type": "type_enum.type_livre.TypeLivre"
+                    },
+                    {
+                        "py/tuple": [
+                            "Reference"
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "py/object": "classes.book.Book",
+            "_author": "totot",
+            "_title": "lalal",
+            "_genre": {
+                "py/reduce": [
+                    {
+                        "py/type": "type_enum.type_livre.TypeLivre"
+                    },
+                    {
+                        "py/tuple": [
+                            "Nonfiction"
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

@@ -56,15 +56,24 @@ def creation_user():
 def reserver_livre():
     nom = input("Entrer le nom de la personne: ")
     joueur = None
-    for personne in library.lst_user:
+    index = None
+    for i,personne in enumerate(library.lst_user):
         if personne.name == nom:
             joueur = personne
+            index = i
             break
     if joueur is not None:
+        print(joueur)
         print(f"Veuillez choisir un livre parmi ceci: ")
         library.voir_livre()
-        joueur.ajouter_livre()
-        library.sauvegarder()
+        la_liste = joueur.ajouter_livre()
+
+        if la_liste is not None:
+            joueur.lst_livre.append(la_liste)
+            print( joueur.lst_livre )
+            library.lst_user[index] = joueur
+            library.sauvegarder()
+
 
 def retourner_livre():
     pass

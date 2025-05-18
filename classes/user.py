@@ -27,26 +27,23 @@ class User:
             self._age = nouv_age
 
     def ajouter_livre(self):
-        from classes.library import library
+            from classes.library import library
 
-        library.load()
-        nom = input("nom: ")
-        titre = input("author: ")
-        le_livre = None
-        if len(self.lst_livre) < 4 :
+            library.load()
+            nom = input("Nom de l'auteur du livre à réserver: ")
+            titre = input("Titre du livre à réserver: ")
+
+            if len(self.lst_livre) >= 4:
+                print("Il n'y a plus de place dans la liste (max 4 livres).")
+                return None
+
             for livre in library.lst_livre:
-                if any(nom == l.author and titre ==l.title for l in library.lst_livre):
-                    self.lst_livre.append(livre)
+                if livre.author == nom and livre.title == titre:
+                    print(f"Le livre '{livre.title}' de {livre.author} a été ajouté.")
+                    return livre
 
-                    print(f"{livre.author} a été ajouté")
-                    return
-                else:
-                    self.lst_livre.append(livre)
-
-        else:
-            print("il n'ya pus de place dans la liste")
-            return
-
+            print("Livre non trouvé.")
+            return None
 
     def retourner_livre(self):
 
