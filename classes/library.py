@@ -8,7 +8,25 @@ class Library:
         self.lst_user = []
         self.lst_livre = []
 
+    def creation_livre(self):
+        self.load()
+        book1 = Book("beyblade","mrco",TypeLivre.FICTION)
+        book2 = Book("babab","jaa",TypeLivre.REFERENCE)
+        book3 = Book("totot","lalal",TypeLivre.NONFICTION)
+        liste_livre = [book1,book2,book3]
+        for livre in liste_livre:
+            if not any(l.title == livre.title and l.author == livre.author for l in self.lst_livre):
+                self.lst_livre.append(livre)
+        self.sauvegarder()
 
+    def informations_user(self):
+        self.load()
+        for personne in self.lst_user:
+            print(personne)
+    def voir_livre(self):
+        self.load()
+        for livre in self.lst_livre:
+            print(livre)
     def add_book(self,livre):
         self.load()
         self.lst_livre.append(livre)
@@ -23,33 +41,15 @@ class Library:
         with open('library.json', 'w',encoding="utf-8") as file:
             file.write(jsonpickle.encode(self,indent=4))
 
-    @staticmethod
-    def load():
+
+    def load(self):
         try:
             with open('library.json', 'r', encoding="utf-8") as file:
-                return jsonpickle.decode(file.read())
+                saved_library: Library = jsonpickle.decode(file.read())
+                self.lst_user = saved_library.lst_user
+                self.lst_livre = saved_library.lst_livre
         except FileNotFoundError:
             return []
 
 
 library  = Library()
-larcel  = User("larcel",12)
-eliena = User("eliena",19)
-
-book1 = Book("allltak","yea",TypeLivre.REFERENCE)
-book2 = Book("beyblade","asd",TypeLivre.FICTION)
-book3 = Book("bakugan","asd",TypeLivre.NONFICTION)
-
-library.add_book(book1)
-library.add_book(book2)
-library.add_book(book3)
-
-
-
-library.load()
-
-larcel.retourner_livre()
-
-
-library.add_user(larcel)
-library.sauvegarder()

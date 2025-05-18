@@ -1,7 +1,6 @@
 from classes.book import Book
 from type_enum.type_livre import TypeLivre
 
-
 class User:
     def __init__(self,name:str,age:int):
 
@@ -28,18 +27,25 @@ class User:
             self._age = nouv_age
 
     def ajouter_livre(self):
-        nom_livre = input("Nom livre: ")
-        titre_livre = input("Titre livre: ")
-        le_livre = Book(nom_livre,titre_livre,TypeLivre.FICTION)
+        from classes.library import library
+
+        library.load()
+        nom = input("nom: ")
+        titre = input("author: ")
+        le_livre = None
         if len(self.lst_livre) < 4 :
-            for livre in self.lst_livre:
-                if livre.author == livre.author:
-                    print(f"{le_livre.author} est déja dans la liste")
+            for livre in library.lst_livre:
+                if any(nom == l.author and titre ==l.title for l in library.lst_livre):
+                    self.lst_livre.append(livre)
+
+                    print(f"{livre.author} a été ajouté")
                     return
+                else:
+                    self.lst_livre.append(livre)
+
         else:
             print("il n'ya pus de place dans la liste")
             return
-        self.lst_livre.append(le_livre)
 
 
     def retourner_livre(self):
