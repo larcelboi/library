@@ -74,6 +74,9 @@ def reserver_livre():
             library.lst_user[index] = joueur
             library.sauvegarder()
 
+            library.enlever_livre(index)
+
+
 
 def retourner_livre():
     pass

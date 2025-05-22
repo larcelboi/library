@@ -19,6 +19,10 @@ class Library:
                 self.lst_livre.append(livre)
         self.sauvegarder()
 
+    def enlever_livre(self,index_livre):
+        self.load()
+        self.lst_livre.pop(index_livre)
+        self.sauvegarder()
     def informations_user(self):
         self.load()
         for personne in self.lst_user:
